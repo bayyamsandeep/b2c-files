@@ -1152,6 +1152,26 @@
             return false; // Condition not met, keep observing
         }
 
+        // Validate Change Password fields and enable the button
+        function validatePasswords() {
+            let newPasswordInput = document.getElementById('newPassword');
+            let reenterPasswordInput = document.getElementById('reenterPassword');
+            let continueButton = document.getElementById('continue');
+            let newPassword = newPasswordInput.value;
+            let reenterPassword = reenterPasswordInput.value;
+
+            console.log("observing")
+
+            if (newPassword && reenterPassword && newPassword === reenterPassword) {
+                // If both passwords match and are filled, show the button
+                continueButton.style.visibility = 'visible';
+                continueButton.innerText = 'Change Password';
+                console.log("stop observing")
+                return true; // Condition met, stop observing
+            }
+            return false; // Condition not met, keep observing
+        }
+
         function initializeOnLoad() {
             let termsLabel = document.querySelector('#Yes_option');
             let cancelBtn = document.getElementById("cancel");
@@ -1236,7 +1256,17 @@
         // Start emailSuccess observing
         emailSuccessObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style'] });
 
+        // Set up a MutationObserver to  validate Change Password and enable the button
+        var changePasswordObserver = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                if (validatePasswords()) {
+                    emailSuccessObserver.disconnect(); // Stop observing once the condition is met
+                }
+            });
+        });
 
+        // Start emailSuccess observing
+        changePasswordObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style'] })
 
     </script>
 
