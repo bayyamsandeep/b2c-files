@@ -1170,13 +1170,15 @@
                 return true; // Condition met, stop observing
             } else {
                 // Add event listeners to update the 'value' attribute on input
-                console.log("inputs", newPasswordInput, reenterPasswordInput)
-                [newPasswordInput, reenterPasswordInput].forEach(input => {
-                    console.log("input", input)
-                    input?.addEventListener('input', () => {
-                        input?.setAttribute('value', input.value);
-                    });
-                });
+                console.log("inputs", newPasswordInput, reenterPasswordInput, newPassword, reenterPassword)
+                newPasswordInput.value = newPassword;
+                reenterPasswordInput.value = reenterPassword;
+                // [newPasswordInput, reenterPasswordInput].forEach(input => {
+                //     console.log("input", input)
+                //     input?.addEventListener('input', () => {
+                //         input?.setAttribute('value', input.value);
+                //     });
+                // });
                 return false; // Condition not met, keep observing
             }
         }
