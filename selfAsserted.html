@@ -1162,25 +1162,15 @@
 
             console.log("observing")
 
-            if (newPassword && reenterPassword && newPassword === reenterPassword) {
+            // if (newPassword && reenterPassword && newPassword === reenterPassword) {
+            if (newPasswordInput && reenterPasswordInput) {
                 // If both passwords match and are filled, show the button
-                continueBtn.style.visibility = 'visible';
+                continueBtn.style.setProperty('visibility', 'visible', 'important');
                 continueBtn.innerText = 'Change Password';
                 console.log("stop observing")
                 return true; // Condition met, stop observing
-            } else {
-                // Add event listeners to update the 'value' attribute on input
-                console.log("inputs", newPasswordInput, reenterPasswordInput, newPassword, reenterPassword)
-                newPasswordInput.value = newPassword;
-                reenterPasswordInput.value = reenterPassword;
-                // [newPasswordInput, reenterPasswordInput].forEach(input => {
-                //     console.log("input", input)
-                //     input?.addEventListener('input', () => {
-                //         input?.setAttribute('value', input.value);
-                //     });
-                // });
-                return false; // Condition not met, keep observing
             }
+            return false; // Condition not met, keep observing
         }
 
         function initializeOnLoad() {
