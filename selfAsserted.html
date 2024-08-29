@@ -1152,23 +1152,33 @@
             return false; // Condition not met, keep observing
         }
 
+        // Attach event listeners to input fields
+        function setupEventListeners() {
+            let newPasswordInput = document.getElementById('newPassword');
+            let reenterPasswordInput = document.getElementById('reenterPassword');
+
+            if (newPasswordInput && reenterPasswordInput) {
+                // Validate on input change
+                newPasswordInput.addEventListener('input', validatePasswords);
+                reenterPasswordInput.addEventListener('input', validatePasswords);
+            }
+        }
+
         // Validate Change Password fields and enable the button
         function validatePasswords() {
             let newPasswordInput = document.getElementById('newPassword');
             let reenterPasswordInput = document.getElementById('reenterPassword');
             let continueBtn = document.getElementById('continue');
-            let newPassword = newPasswordInput?.value;
-            let reenterPassword = reenterPasswordInput?.value;
 
-            console.log("observing")
-
-            // if (newPassword && reenterPassword && newPassword === reenterPassword) {
             if (newPasswordInput && reenterPasswordInput) {
                 // If both passwords match and are filled, show the button
                 continueBtn.style.setProperty('visibility', 'visible', 'important');
-                continueBtn.innerText = 'Change Password';
-                console.log("stop observing")
-                return true; // Condition met, stop observing
+                if (newPasswordInput.value && reenterPasswordInput.value && newPasswordInput.value === reenterPasswordInput.value) {
+                    console.log("finally")
+                    continueBtn.innerText = 'Change Password';
+                    return true; // Condition met, stop observing
+                }
+                setupEventListeners()
             }
             return false; // Condition not met, keep observing
         }
