@@ -1173,10 +1173,10 @@
             if (newPasswordInput && reenterPasswordInput) {
                 // If both passwords match and are filled, show the button
                 continueBtn.style.setProperty('visibility', 'visible', 'important');
-                continueBtn.disabled = true
+                continueBtn.ariaDisabled = true
                 continueBtn.innerText = 'Change Password';
                 if (newPasswordInput.value && reenterPasswordInput.value && newPasswordInput.value === reenterPasswordInput.value) {
-                    continueBtn.disabled = false;
+                    continueBtn.ariaDisabled = false;
                 }
             }
         }
@@ -1276,7 +1276,7 @@
             });
         });
 
-        // Start emailSuccess observing
+        // Start change password observing
         changePasswordObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'value'] })
     </script>
 
