@@ -415,6 +415,11 @@
             opacity: .3
         }
 
+        .buttons button[aria-disabled=true]:hover {
+            opacity: .5;
+            cursor: not-allowed !important;
+        }
+
         .buttons button:not([aria-disabled=true]) {
             opacity: 0.9 !important
         }
