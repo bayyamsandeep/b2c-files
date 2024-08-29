@@ -1136,11 +1136,6 @@
     </style>
 
     <script>
-        let newPasswordInput = document.getElementById('newPassword');
-        let reenterPasswordInput = document.getElementById('reenterPassword');
-        let continueBtn = document.getElementById('continue');
-
-        console.log("inputs-top", newPasswordInput, reenterPasswordInput)
 
         function checkAndClickContinue() {
             let emailSuccess = document.getElementById("email_success");
@@ -1159,6 +1154,9 @@
 
         // Validate Change Password fields and enable the button
         function validatePasswords() {
+            let newPasswordInput = document.getElementById('newPassword');
+            let reenterPasswordInput = document.getElementById('reenterPassword');
+            let continueBtn = document.getElementById('continue');
             let newPassword = newPasswordInput?.value;
             let reenterPassword = reenterPasswordInput?.value;
 
@@ -1170,8 +1168,17 @@
                 continueBtn.innerText = 'Change Password';
                 console.log("stop observing")
                 return true; // Condition met, stop observing
+            } else {
+                // Add event listeners to update the 'value' attribute on input
+                console.log("inputs", newPasswordInput, reenterPasswordInput)
+                [newPasswordInput, reenterPasswordInput].forEach(input => {
+                    console.log("input", input)
+                    input?.addEventListener('input', () => {
+                        input?.setAttribute('value', input.value);
+                    });
+                });
+                return false; // Condition not met, keep observing
             }
-            return false; // Condition not met, keep observing
         }
 
         function initializeOnLoad() {
@@ -1269,17 +1276,6 @@
 
         // Start emailSuccess observing
         changePasswordObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'value'] })
-
-        console.log("inputs", newPasswordInput, reenterPasswordInput)
-        // Add event listeners to update the 'value' attribute on input
-        [newPasswordInput, reenterPasswordInput].forEach(input => {
-            console.log("input", input)
-            input?.addEventListener('input', () => {
-                input?.setAttribute('value', input.value);
-            });
-        });
-
-
     </script>
 
 </head>
