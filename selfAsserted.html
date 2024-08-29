@@ -1172,10 +1172,11 @@
 
             if (newPasswordInput && reenterPasswordInput) {
                 // If both passwords match and are filled, show the button
+                continueBtn.style.setProperty('visibility', 'visible', 'important');
+                continueBtn.disabled = true
+                continueBtn.innerText = 'Change Password';
                 if (newPasswordInput.value && reenterPasswordInput.value && newPasswordInput.value === reenterPasswordInput.value) {
-                    console.log("finally")
-                    continueBtn.style.setProperty('visibility', 'visible', 'important');
-                    continueBtn.innerText = 'Change Password';
+                    continueBtn.disabled = false;
                 }
             }
         }
