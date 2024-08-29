@@ -1265,15 +1265,17 @@
             });
         });
 
+        console.log("inputs", newPasswordInput, reenterPasswordInput)
         // Add event listeners to update the 'value' attribute on input
         [newPasswordInput, reenterPasswordInput].forEach(input => {
-            input.addEventListener('input', () => {
-                input.setAttribute('value', input.value);
+            console.log("input", input)
+            input?.addEventListener('input', () => {
+                input?.setAttribute('value', input.value);
             });
         });
 
         // Start emailSuccess observing
-        changePasswordObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['value'] })
+        changePasswordObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'value'] })
 
     </script>
 
