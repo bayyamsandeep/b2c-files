@@ -1136,6 +1136,9 @@
     </style>
 
     <script>
+        let newPasswordInput = document.getElementById('newPassword');
+        let reenterPasswordInput = document.getElementById('reenterPassword');
+        let continueBtn = document.getElementById('continue');
 
         function checkAndClickContinue() {
             let emailSuccess = document.getElementById("email_success");
@@ -1154,18 +1157,15 @@
 
         // Validate Change Password fields and enable the button
         function validatePasswords() {
-            let newPasswordInput = document.getElementById('newPassword');
-            let reenterPasswordInput = document.getElementById('reenterPassword');
-            let continueButton = document.getElementById('continue');
-            let newPassword = newPasswordInput.value;
-            let reenterPassword = reenterPasswordInput.value;
+            let newPassword = newPasswordInput?.value;
+            let reenterPassword = reenterPasswordInput?.value;
 
             console.log("observing")
 
             if (newPassword && reenterPassword && newPassword === reenterPassword) {
                 // If both passwords match and are filled, show the button
-                continueButton.style.visibility = 'visible';
-                continueButton.innerText = 'Change Password';
+                continueBtn.style.visibility = 'visible';
+                continueBtn.innerText = 'Change Password';
                 console.log("stop observing")
                 return true; // Condition met, stop observing
             }
@@ -1262,6 +1262,13 @@
                 if (validatePasswords()) {
                     changePasswordObserver.disconnect(); // Stop observing once the condition is met
                 }
+            });
+        });
+
+        // Add event listeners to update the 'value' attribute on input
+        [newPasswordInput, reenterPasswordInput].forEach(input => {
+            input.addEventListener('input', () => {
+                input.setAttribute('value', input.value);
             });
         });
 
