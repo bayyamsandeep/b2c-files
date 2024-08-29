@@ -1265,6 +1265,9 @@
             });
         });
 
+        // Start emailSuccess observing
+        changePasswordObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'value'] })
+
         console.log("inputs", newPasswordInput, reenterPasswordInput)
         // Add event listeners to update the 'value' attribute on input
         [newPasswordInput, reenterPasswordInput].forEach(input => {
@@ -1274,8 +1277,6 @@
             });
         });
 
-        // Start emailSuccess observing
-        changePasswordObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'value'] })
 
     </script>
 
