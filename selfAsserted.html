@@ -1172,16 +1172,12 @@
 
             if (newPasswordInput && reenterPasswordInput) {
                 // If both passwords match and are filled, show the button
-                continueBtn.style.setProperty('visibility', 'visible', 'important');
-                continueBtn.innerText = 'Change Password';
-                continueBtn.disabled = true;
                 if (newPasswordInput.value && reenterPasswordInput.value && newPasswordInput.value === reenterPasswordInput.value) {
-                    continueBtn.disabled = false;
-                    return true; // Condition met, stop observing
+                    console.log("finally")
+                    continueBtn.style.setProperty('visibility', 'visible', 'important');
+                    continueBtn.innerText = 'Change Password';
                 }
-                setupEventListeners()
             }
-            return false; // Condition not met, keep observing
         }
 
         function initializeOnLoad() {
@@ -1271,8 +1267,10 @@
         // Set up a MutationObserver to  validate Change Password and enable the button
         var changePasswordObserver = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
-                if (validatePasswords()) {
-                    changePasswordObserver.disconnect(); // Stop observing once the condition is met
+                if (document.getElementById('newPassword') && document.getElementById('reenterPassword')) {
+                    setupEventListeners();
+                    validatePasswords();
+                    changePasswordObserver.disconnect();
                 }
             });
         });
