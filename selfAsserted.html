@@ -1140,6 +1140,8 @@
         let reenterPasswordInput = document.getElementById('reenterPassword');
         let continueBtn = document.getElementById('continue');
 
+        console.log("inputs-top", newPasswordInput, reenterPasswordInput)
+
         function checkAndClickContinue() {
             let emailSuccess = document.getElementById("email_success");
             let emailSuccessDisplay = (emailSuccess?.style.display === 'inline')
