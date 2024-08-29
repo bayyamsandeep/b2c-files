@@ -1260,13 +1260,13 @@
         var changePasswordObserver = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
                 if (validatePasswords()) {
-                    emailSuccessObserver.disconnect(); // Stop observing once the condition is met
+                    changePasswordObserver.disconnect(); // Stop observing once the condition is met
                 }
             });
         });
 
         // Start emailSuccess observing
-        changePasswordObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style'] })
+        changePasswordObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['value'] })
 
     </script>
 
