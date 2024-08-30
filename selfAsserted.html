@@ -1151,7 +1151,7 @@
             if (emailSuccess && emailSuccessDisplay && continueBtn) {
                 setTimeout(function () {
                     continueBtn.click(); // Click the button
-                }, 2000);
+                }, 1000);
                 return true; // Condition met, stop observing
             }
             return false; // Condition not met, keep observing
@@ -1174,19 +1174,25 @@
             let newPasswordInput = document.getElementById('newPassword');
             let reenterPasswordInput = document.getElementById('reenterPassword');
             let continueBtn = document.getElementById('continue');
+            let userInputs = document.querySelectorAll('input');
+
 
             if (newPasswordInput && reenterPasswordInput) {
-                // If both passwords match and are filled, show the button
                 continueBtn.style.setProperty('visibility', 'visible', 'important');
                 continueBtn.ariaDisabled = true
-                continueBtn.innerText = 'Change Password';
+
+                // Change button text only if there are exactly two inputs (password fields)
+                if (userInputs.length == 2) {
+                    continueBtn.innerText = 'Change Password';
+                }
+                // If both passwords match and are filled, show the button
                 if (newPasswordInput.value && reenterPasswordInput.value && newPasswordInput.value === reenterPasswordInput.value) {
                     continueBtn.ariaDisabled = false;
                 }
             }
         }
 
-        function initializeOnLoad() {
+        function configureTermsLabel() {
             let termsLabel = document.querySelector('#Yes_option');
             let cancelBtn = document.getElementById("cancel");
             let submitButton = document.querySelector('button[type="submit"]');
@@ -1249,7 +1255,7 @@
         // Initialize MutationObserver to watch for changes
         var observer = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
-                if (initializeOnLoad()) {
+                if (configureTermsLabel()) {
                     observer.disconnect(); // Stop observing once the element is found and updated
                 }
             });
