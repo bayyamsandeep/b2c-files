@@ -1175,6 +1175,8 @@
             let reenterPasswordInput = document.getElementById('reenterPassword');
             let continueBtn = document.getElementById('continue');
             let userInputs = document.querySelectorAll('input');
+            console.log("userInputs", userInputs.length)
+
 
 
             if (newPasswordInput && reenterPasswordInput) {
@@ -1182,7 +1184,7 @@
                 continueBtn.ariaDisabled = true
 
                 // Change button text only if there are exactly two inputs (password fields)
-                if (userInputs.length == 2) {
+                if (userInputs.length === 2) {
                     continueBtn.innerText = 'Change Password';
                 }
                 // If both passwords match and are filled, show the button
