@@ -11,9 +11,14 @@
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="Crowdsourced marketing platform for SMBs. Consumers drive, Brands Thrive." />
     <link rel="apple-touch-icon" href="https://www.rayv.ai/brandlogo.svg" />
-    <link href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css" />'
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <style id="common">
-        @font-face {
+        /* @font-face {
             font-family: 'SegoeUI';
             src: url(https://login.microsoftonline.com/templates/src/fonts/segoeui.WOFF);
             font-weight: normal;
@@ -23,7 +28,7 @@
             font-family: 'SegoeUI';
             src: url(https://login.microsoftonline.com/templates/src/fonts/segoeui_bold.WOFF);
             font-weight: bold;
-        }
+        } */
 
         #AmazonExchange {
             background-image: url(https://login.microsoftonline.com/templates/src/idp_logos/colored/amazon.svg);
@@ -154,6 +159,7 @@
 
         :root {
             --primary-color: #595CFF;
+            --studio-font-family-name: "Poppins";
         }
 
         html {
@@ -161,7 +167,7 @@
         }
 
         body {
-            font-family: Segoe UI, SegoeUI, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-family: var(--studio-font-family-name), "Helvetica Neue", Helvetica, Arial, sans-serif;
             background-attachment: fixed;
             background-color: #fff;
             background-position: center;
