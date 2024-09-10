@@ -12,6 +12,7 @@
     <meta name="description" content="Crowdsourced marketing platform for SMBs. Consumers drive, Brands Thrive." />
     <link rel="apple-touch-icon" href="https://www.rayv.ai/brandlogo.svg" />
     <link href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style id="common">
         @font-face {
             font-family: 'SegoeUI';
@@ -148,6 +149,7 @@
         /* inject: css */
         :root {
             --primary-color: #595CFF;
+            --studio-font-family-name: "Poppins";
         }
 
         html {
@@ -155,14 +157,13 @@
         }
 
         body {
-            font-family: Segoe UI, SegoeUI, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-family: var(--studio-font-family-name), "Helvetica Neue", Helvetica, Arial, sans-serif;
             background-attachment: fixed;
             background-color: #fff;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
             text-align: left;
-            font: -apple-system-body
         }
 
         p {
